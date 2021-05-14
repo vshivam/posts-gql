@@ -1,0 +1,24 @@
+plugins {
+    id 'com.android.library'
+    id 'kotlin-android'
+    id 'kotlin-kapt'
+}
+
+apply from: "${rootProject.projectDir}/android.gradle"
+
+dependencies {
+
+    implementation(Libs.kotlinStdLibJdk7)
+    implementation(Libs.androidxLifecycleExtensions)
+    implementation(Libs.androidxKotlinExtensions)
+    implementation(Libs.coroutinesTest)
+
+    //region Dagger
+    implementation(Libs.dagger)
+    kapt(Libs.daggerCompiler)
+    //end region
+
+    //region Networking
+    implementation(Libs.apolloRuntime)
+    //end region
+}

@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">posts</string>
+    <string name="title_activity_posts">PostsActivity</string>
+    <string name="title_activity_main">MainActivity</string>
+</resources>

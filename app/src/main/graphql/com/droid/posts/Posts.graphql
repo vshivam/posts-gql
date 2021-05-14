@@ -1,0 +1,26 @@
+query PostPreviewsRaw($page: Int!, $limit: Int!) {
+    posts(options: { paginate: { page: $page, limit: $limit } }) {
+        data {
+            id
+            title
+            body
+        }
+        links {
+            next {
+                page
+                limit
+            }
+        }
+    }
+}
+
+query PostDetailsRaw($id: ID!) {
+    post(id: $id){
+        title
+        body
+        user {
+            name
+            username
+        }
+    }
+}

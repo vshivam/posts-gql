@@ -1,0 +1,21 @@
+plugins {
+    id 'com.android.library'
+    id 'kotlin-android'
+}
+
+apply from: "${rootProject.projectDir}/android.gradle"
+
+dependencies {
+
+    implementation(Libs.kotlinStdLibJdk7)
+    implementation(Libs.dagger)
+    implementation(Libs.androidxLifecycleExtensions)
+
+    api(Libs.junitJupiterApi)
+    api(Libs.junitJupiterParams)
+    testRuntimeOnly(Libs.junitJupiterEngine)
+    api(Libs.mockitoKotlin)
+    api(Libs.mockitoInline)
+    api(Libs.assertJ)
+    api(Libs.coroutinesTest)
+}

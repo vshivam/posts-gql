@@ -1,0 +1,75 @@
+plugins {
+    id 'com.android.application'
+    id 'kotlin-android'
+    id("kotlin-kapt")
+    id("com.apollographql.apollo").version("2.5.6")
+}
+
+apply from: "${rootProject.projectDir}/android.gradle"
+apply from: "${rootProject.projectDir}/compose.gradle"
+
+android {
+    defaultConfig {
+        applicationId "com.droid.posts"
+        resConfig "en"
+        vectorDrawables {
+            useSupportLibrary true
+        }
+    }
+}
+
+apollo {
+    generateKotlinModels.set(true)
+}
+
+dependencies {
+    implementation project(Modules.base)
+
+    // region material
+    implementation(Libs.material)
+    // end region
+
+    //region Coroutines
+    implementation(Libs.kotlinStdLibJdk7)
+    implementation(Libs.coroutinesCore)
+    implementation(Libs.coroutinesAndroid)
+    //end region
+
+    //region AndroidX
+    implementation(Libs.androidxKotlinExtensions)
+    implementation(Libs.androidxAppCompat)
+    implementation(Libs.androidxLifecycleExtensions)
+    implementation(Libs.androidxLifecycleViewModel)
+    implementation(Libs.androidxLifecycleRuntime)
+    implementation(Libs.androidxActivity)
+    //end region
+
+    //region Compose
+    implementation(Libs.composeUi)
+    implementation(Libs.composeTooling)
+    implementation(Libs.composeFoundation)
+    implementation(Libs.composeMaterial)
+    implementation(Libs.composeLiveData)
+    implementation(Libs.composeActivity)
+    implementation(Libs.composeViewModel)
+    implementation(Libs.composeNavigation)
+    implementation(Libs.composePaging)
+    implementation(Libs.accompanistInsets)
+    implementation(Libs.accompanistPager)
+    //end region
+
+    //region Dagger
+    implementation(Libs.dagger)
+    kapt(Libs.daggerCompiler)
+    //end region
+
+    //region Networking
+    implementation(Libs.apolloRuntime)
+    implementation(Libs.apolloCoroutines)
+    //end region
+
+    //region Testing
+    implementation(project(Modules.testCore))
+    testRuntimeOnly(Libs.junitJupiterEngine)
+    //end region
+}

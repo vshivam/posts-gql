@@ -1,0 +1,18 @@
+android {
+    buildFeatures {
+        compose true
+    }
+
+    kotlinOptions {
+        freeCompilerArgs += [
+                "-Xuse-experimental=androidx.compose.foundation.ExperimentalFoundationApi",
+                "-Xuse-experimental=androidx.compose.animation.ExperimentalAnimationApi",
+                "-Xuse-experimental=com.google.accompanist.insets.ExperimentalAnimatedInsets",
+                "-Xuse-experimental=com.google.accompanist.pager.ExperimentalPagerApi"
+        ]
+    }
+
+    composeOptions {
+        kotlinCompilerExtensionVersion Versions.compose
+    }
+}
